@@ -19,6 +19,7 @@ lol.on('start', function(){
 })
 
 lol.on('message', function(data){
-  lol.postMessageToChannel('general', 'YAYYY');
-
+  if(data.text.indexOf('hello') > -1) {
+    lol.postMessageToChannel('general', 'Hi there.')
+  }
 })
