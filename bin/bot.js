@@ -30,7 +30,7 @@ lol.on('message', function(data){
     request('http://api.tvmaze.com/singlesearch/shows?q=game-of-thrones&embed=episodes', function (error, response, body) {
       if (!error && response.statusCode == 200) {
         var res = JSON.parse(body)
-        var res = 'the next episode is called *' + res._embedded.episodes[res._embedded.episodes.length].name + '*';
+        var res = 'the next episode is called *' + res._embedded.episodes[res._embedded.episodes.length - 1].name + '*';
         lol.postMessageToChannel('general', res)
       }
     })
