@@ -9,6 +9,8 @@
   "author": "Kieran McDonald",
   "license": "MIT",
   "dependencies": {
+    "express": "^4.13.4",
+    "request": "^2.72.0",
     "slackbots": "^0.5.1",
     "sqlite3": "^3.1.3"
   }
