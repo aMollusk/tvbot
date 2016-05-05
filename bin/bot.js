@@ -25,7 +25,7 @@ lol.on('start', function(){
 
 lol.on('message', function(data){
 
-  if (data.text.indexOf('game of thrones') {
+  if (data.text.indexOf('game of thrones') > -1) {
 
     var req = 'game-of-thrones'
     request('http://api.tvmaze.com/singlesearch/shows?q=game-of-thrones&embed=episodes', function (error, response, body) {
