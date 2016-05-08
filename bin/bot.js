@@ -1,11 +1,10 @@
 'use strict';
 
-var request = require('request');
 
 
 var Lol = require('../lib/app.js');
 
-var token = 'xoxb-40314032773-oyzpGoxetR8YYUEjjtnuwkuw';
+var token = 'xoxb-40314032773-yuqYiMJbAVeCgDmuZq8bMsAN';
 var name = 'tvbot';
 
 var lol = new Lol({
@@ -16,23 +15,62 @@ var lol = new Lol({
 lol.run();
 
 lol.on('start', function(){
-
-    lol.postMessageToChannel('general', 'YAYYY');
-
-
+    // lol.postMessageToChannel('general', 'yay');
 })
 
 lol.on('message', function(data){
 
-  if (data.text.indexOf('game of thrones') > -1) {
-
-    var req = 'game-of-thrones'
-    request('http://api.tvmaze.com/singlesearch/shows?q=game-of-thrones&embed=episodes', function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        var res = JSON.parse(body)
-        var res = 'the next episode is called *' + res._embedded.episodes[res._embedded.episodes.length - 1].name + '*';
-        lol.postMessageToChannel('general', res)
-      }
-    })
+  if (data.type == 'message') {
+    // console.log(this._mentionTvbot(data.text))
+    var instruction = this._mentionTvbot(data.text)
+    if(instruction.active === true && instruction.command != 'none'){
+      this.postMessageToChannel('general', this._queryTv(filterString(data.text, instruction.command)))
+    }
   }
 })
+
+
+
+
+var filterString = function(message, command) {
+    var indexOfCommand = message.indexOf(command) + command.length;
+
+    var tvShow = message.slice(indexOfCommand + 1, message.length)
+
+    tvShow = tvShow.replace(/\s+/g, '-')
+    console.log(tvShow)
+
+    return {
+      tvShow,
+      command
+    }
+
+}
+
+
+
+
+// filterString('tvbot, next game of thrones', 'next')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// lol
