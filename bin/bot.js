@@ -21,7 +21,7 @@ lol.on('start', function(){
 lol.on('message', function(data){
   if (data.type == 'message') {
     // console.log(this._mentionTvbot(data.text))
-      var tvObject = this._mentionTvbot(data.text.toLowerCase())
+      var tvObject = this._mentionTvbot(data.text.toLowerCase(), data.channel)
   }
 
 })
