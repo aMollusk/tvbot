@@ -5,6 +5,7 @@ var request = require('request');
 var Lol = require('../lib/app.js');
 
 var token = process.env.BOT_API_KEY;
+
 var name = 'tvbot';
 
 var lol = new Lol({
@@ -21,7 +22,7 @@ lol.on('start', function(){
 lol.on('message', function(data){
   if (data.type == 'message') {
     // console.log(this._mentionTvbot(data.text))
-      var tvObject = this._mentionTvbot(data.text.toLowerCase(), data.channel)
+        var tvObject = this._mentionTvbot(data.text.toLowerCase(), data.channel)
   }
 
 })
