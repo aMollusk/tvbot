@@ -4,7 +4,7 @@ var request = require('request');
 
 var Lol = require('../lib/app.js');
 
-var token = 'xoxb-40314032773-H4dHpIi5s2R4M5Qx2vvEBwgq';
+var token = process.env.BOT_API_KEY;
 var name = 'tvbot';
 
 var lol = new Lol({
@@ -19,12 +19,11 @@ lol.on('start', function(){
 })
 
 lol.on('message', function(data){
-
   if (data.type == 'message') {
     // console.log(this._mentionTvbot(data.text))
       var tvObject = this._mentionTvbot(data.text)
-      var reqUrl = "http://api.tvmaze.com/singlesearch/shows?q=" + tvObject.tvShow + "&embed=episodes";
   }
+
 })
 
 
